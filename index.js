@@ -21,6 +21,8 @@ sites_raw.set(5, ['Mount Majura', 'Northen Canberra, Between Suburbs Majura and 
 " which protrudes from the soil surface. Chert forms sharp shards when broken and was often used by Aboriginal people to make tools. \n\nDescription from Conservation Council ACT"])
 let sites_obj = [];
 
+// This function dynamically creates a list item for each site.
+// It assigns an ID and a click event listener to each list item.
 for (i=0; i<sites_raw.size; i++){
     const site = new Object();
     site.name = sites_raw.get(i)[0]
@@ -34,6 +36,8 @@ for (i=0; i<sites_raw.size; i++){
     sites_obj.push(site)
 }
 
+// This function maps the given key to a corresponding value in the dictionary.
+// It is used to convert specific keys to more human-readable values.
 function get_type(key) {
     const dict = new Map();
         dict.set("heritage", "Sacred Site");
@@ -57,8 +61,12 @@ function create_list(site, i){
     parent.appendChild(div)
 }
 
+// This function handles the click event on each list item or map dot.
+// It adjusts the visibility and color of the selected and unselected items,
+// and dynamically generates and inserts detailed information about the selected site.
 function handleClick(event){
     let current = 0;
+    // This loop finds the selected site, then adjust the other dots/sites styling to ensure the user knows which site is active.
     for (i in sites_obj){
         const dot = document.getElementById(i);
         const title = document.getElementById(`list_${i}`)
@@ -125,6 +133,8 @@ function handleClick(event){
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    // This loop iterates over each item in the sites_obj array, creating a dot element for each site
+    // and appending it to the map container. It also calls the create_list function to create list items.
     let container = document.getElementById("map-container");
     for (i in sites_obj){
         let site = sites_obj[i]
