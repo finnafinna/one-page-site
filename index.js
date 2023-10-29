@@ -21,8 +21,8 @@ sites_raw.set(5, ['Mount Majura', 'Northen Canberra, Between Suburbs Majura and 
 " which protrudes from the soil surface. Chert forms sharp shards when broken and was often used by Aboriginal people to make tools. \n\nDescription from Conservation Council ACT"])
 let sites_obj = [];
 
-// This function dynamically creates a list item for each site.
-// It assigns an ID and a click event listener to each list item.
+// This loop iterates over each item in the sites_raw array and creates a new site object, 
+// populating it with details from the sites_raw array. The site object is then added to the sites_obj array.
 for (i=0; i<sites_raw.size; i++){
     const site = new Object();
     site.name = sites_raw.get(i)[0]
@@ -45,7 +45,8 @@ function get_type(key) {
     
     return dict.get(key)
 }
-
+// This function dynamically creates a list item for each site.
+// It assigns an ID and a click event listener to each list item.
 function create_list(site, i){
     const parent = document.getElementById("all-sites");
     const div = document.createElement("div");
